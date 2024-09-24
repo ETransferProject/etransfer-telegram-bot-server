@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const TelegramBot = require("node-telegram-bot-api");
 const config = require("./config");
+const path = require("path");
 
 const bot = new TelegramBot(config.botToken, {
   polling: false,
@@ -26,55 +27,47 @@ console.log("webhookUrl:", webhookUrl);
 bot.onText(/\/start/, async (msg) => {
   try {
     const chatId = msg.chat.id;
-    bot.sendMessage(
-      chatId,
-      "Your Universal Gateway to Seamless Transfers Securely between aelf and beyond.\n \nJoin [Our channel](https://t.me/etransferofficial) to receive updates and promotions:",
-      {
-        parse_mode: "Markdown",
-        reply_markup: {
-          inline_keyboard: [
-            [
-              {
-                text: "💳 Deposit",
-                web_app: {
-                  url: config.depositUrl,
-                },
+    const relativePath = "images/banner-img.png";
+    const absolutePath = path.resolve(__dirname, relativePath);
+    bot.sendPhoto(chatId, absolutePath, {
+      caption:
+        "Your Universal Gateway to Seamless Transfers Securely between aelf and beyond.\n \n[Contact us](https://t.me/etransfer_support) for support.",
+      parse_mode: "Markdown",
+      reply_markup: {
+        inline_keyboard: [
+          [
+            {
+              text: "💳 Deposit",
+              web_app: {
+                url: config.depositUrl,
               },
-              {
-                text: "💵 Withdraw",
-                web_app: {
-                  url: config.withdrawUrl,
-                },
+            },
+            {
+              text: "💵 Withdraw",
+              web_app: {
+                url: config.withdrawUrl,
               },
-            ],
-            [
-              {
-                text: "🗒 History",
-                web_app: {
-                  url: config.historyUrl,
-                },
-              },
-              {
-                text: "📊 Info",
-                web_app: {
-                  url: config.infoUrl,
-                },
-              },
-            ],
-            [
-              {
-                text: "💬 Support",
-                url: "https://t.me/etransfer_support",
-              },
-              {
-                text: "🔗 Website",
-                url: config.websiteUrl,
-              },
-            ],
+            },
           ],
-        },
-      }
-    );
+          [
+            {
+              text: "🎉 Join Community",
+              url: config.communityUrl,
+            },
+            {
+              text: "🤳 Follow X",
+              url: config.xUrl,
+            },
+          ],
+          [
+            {
+              text: "🔗 Website",
+              url: config.websiteUrl,
+            },
+          ],
+        ],
+      },
+    });
   } catch (error) {
     console.error("onText error", error);
   }

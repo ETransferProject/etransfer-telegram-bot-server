@@ -1,1 +1,1 @@
-# etransfer-telegram-bot-serverser
+# etransfer-telegram-bot-server
