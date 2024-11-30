@@ -43,9 +43,9 @@ bot.onText(/\/start/, async (msg) => {
               },
             },
             {
-              text: "💵 Withdraw",
+              text: "💵 Transfer",
               web_app: {
-                url: config.withdrawUrl,
+                url: config.transferUrl,
               },
             },
           ],

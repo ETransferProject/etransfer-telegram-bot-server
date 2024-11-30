@@ -4,7 +4,7 @@ const configMap = {
   mainnet: {
     appUrl: "https://app.etransfer.exchange",
     depositUrl: "https://app.etransfer.exchange/?type=Deposit",
-    withdrawUrl: "https://app.etransfer.exchange/?type=Withdraw",
+    transferUrl: "https://app.etransfer.exchange/cross-chain-transfer",
     historyUrl: "https://app.etransfer.exchange/?type=History",
     infoUrl: "https://app.etransfer.exchange/?type=Info",
     websiteUrl: "https://etransfer.exchange",
@@ -16,7 +16,7 @@ const configMap = {
   testnet: {
     appUrl: "https://test-app.etransfer.exchange",
     depositUrl: "https://test-app.etransfer.exchange/?type=Deposit",
-    withdrawUrl: "https://test-app.etransfer.exchange/?type=Withdraw",
+    transferUrl: "https://test-app.etransfer.exchange/cross-chain-transfer",
     historyUrl: "https://test-app.etransfer.exchange/?type=History",
     infoUrl: "https://test-app.etransfer.exchange/?type=Info",
     websiteUrl: "https://testhome.etransfer.exchange",
